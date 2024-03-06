@@ -40,4 +40,7 @@ build/
 # VSCode
 .vscode/
 
+#rndtxt
+rndtxt/build/
+
 

@@ -8,22 +8,22 @@ Todsc makeDescription(Options &options)
 {
     Todsc odsc("\n"
                "How to use:\n"
-               "mtfind [Options] [-v] \n"
-               "mtfind [-h|--help]  \n"
+               "rndtxt [Options] [-v] \n"
+               "rndtxt [-h|--help]  \n"
                " \n"
                "Options");
 
     odsc.add_options()
     ("verbose,v", bpo::bool_switch(&options.verbose)->default_value(false), "verbose (print command line options values)")
-    ("filepathname,f", bpo::value<std::string>(&options.mainOptions["filepathname"]), "path and name of output file")
-    ("searchmask,s", bpo::value<std::string>(&options.mainOptions["searchmask"]), "search mask '?' mean any symbol, not forget to use double \\\\ for \\ symbol")
-    
+    ("filepathname,n", bpo::value<std::string>(&options.mainOptions["filepathname"]), "path and name of output file")
+    ("filelength,f", bpo::value<ulong>(&options.filelength), "length of output file")
+    ("linelength,l", bpo::value<uint>(&options.linelength), "length of line")
 
     ("help,h", "Print help mesage");
     
 
     Todsc example("Example:\n"
-                  "mtfind --verbose --filepathname testfile --searchmask \"?ad\" \n"
+                  "rndtxt --verbose --filepathname testfile --filelength 1000000 --linelegth 999 \n"
                   "\n");
     odsc.add(example);
     return odsc;
@@ -65,7 +65,8 @@ void printVerbose(Options &options)
 {    
     std::cout << "====================" << std::endl;
     std::cout << "filepathname: " << options.mainOptions["filepathname"] << std::endl;
-    std::cout << "searchmask: " << options.mainOptions["searchmask"] << std::endl;
+    std::cout << "filelength: " << options.filelength << std::endl;
+    std::cout << "linelength: " << options.linelength << std::endl;
     std::cout << "====================" << std::endl;
     std::cout << std::endl;
 }
