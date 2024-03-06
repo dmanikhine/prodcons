@@ -8,22 +8,22 @@ Todsc makeDescription(Options &options)
 {
     Todsc odsc("\n"
                "How to use:\n"
-               "rndtxt [Options] [-v] \n"
-               "rndtxt [-h|--help]  \n"
+               "mtfind [Options] [-v] \n"
+               "mtfind [-h|--help]  \n"
                " \n"
                "Options");
 
     odsc.add_options()
     ("verbose,v", bpo::bool_switch(&options.verbose)->default_value(false), "verbose (print command line options values)")
     ("filepathname,f", bpo::value<std::string>(&options.mainOptions["filepathname"]), "path and name of output file")
-    ("searchmask,f", bpo::value<std::string>(&options.mainOptions["searchmask"]), "search mask '?' mean any symbol")
+    ("searchmask,s", bpo::value<std::string>(&options.mainOptions["searchmask"]), "search mask '?' mean any symbol, not forget to use double \\\\ for \\ symbol")
     
 
     ("help,h", "Print help mesage");
     
 
     Todsc example("Example:\n"
-                  "rndtxt --verbose --filepathname testfile --filelength 1000000 --linelegth 999 \n"
+                  "mtfind --verbose --filepathname testfile --searchmask \"?ad\" \n"
                   "\n");
     odsc.add(example);
     return odsc;
