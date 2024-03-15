@@ -9,7 +9,7 @@ TVectorLongVectorIntString TTransformLine::operator()(TVectorLongString &inVec)
 {
     TVectorLongVectorIntString resVec(inVec.size());
 
-    std::transform(std::execution::par, inVec.cbegin(), inVec.cend(),
+    std::transform(std::execution::par_unseq, inVec.cbegin(), inVec.cend(),
                    resVec.begin(),
                    [&lambda_rgx = m_rgx](std::pair<long, std::string> x)
                    {

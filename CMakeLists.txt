@@ -11,6 +11,6 @@ message(${Boost_INCLUDE_DIRS})
 include_directories(${Boost_INCLUDE_DIRS})
 
 add_executable(mtfind main.cpp readfile.cpp transformline.cpp smalltools.cpp cmdoptions.cpp concurrency.cpp)
-target_compile_options(mtfind PRIVATE -O3) #tail recursion
+target_compile_options(mtfind PRIVATE -Ofast -pthread) #O3 tail recursion
 
-TARGET_LINK_LIBRARIES(mtfind ${Boost_LIBRARIES})
+TARGET_LINK_LIBRARIES(mtfind ${Boost_LIBRARIES} tbb)

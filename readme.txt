@@ -7,6 +7,9 @@ cmake version 3.22.1
 операционная система:
 Ubuntu 22.04.3 LTS
 
+To use the parallel execution policies with GCC you have to link to Intel TBB using
+not forget to add tbb to libraries TARGET_LINK_LIBRARIES(mtfind ${Boost_LIBRARIES} tbb)
+
 
 Программа собирается и компилируется с помощью CMake.
 

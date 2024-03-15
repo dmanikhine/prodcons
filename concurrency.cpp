@@ -26,6 +26,7 @@ void consumer(TTransformLine &transformLine)
     {
         while (spsc_queue.pop(vectorLongString))
         {
+            std::cout << "consummer" << std::endl;
             TVectorLongVectorIntString transformVec = transformLine(vectorLongString);
             TVectorLongVectorIntString endVec = removeEmptyLine(std::move(transformVec));
             match_counter += getMatchCount(endVec);

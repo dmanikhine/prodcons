@@ -2,12 +2,13 @@
 #include "mytype.hpp"
 #include <iostream>
 
-const long LENGTH_OF_BUFFER = 1'000'000;
+const long LENGTH_OF_BUFFER = 1000;
 
 std::pair<bool, TVectorLongString> TReadFile::operator()()
 {
     std::string inLine;
     TVectorLongString localVector;    
+    std::cout << "Read File" << std::endl;
     for (int i = 1; i <= LENGTH_OF_BUFFER; i++)
     {
         if (std::getline(m_ifs, inLine))
