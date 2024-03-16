@@ -29,6 +29,8 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    auto start_time = std::chrono::high_resolution_clock::now();
+
     TReadFile rf{ifs}; 
     boost::thread producer_thread(producer, std::ref(rf));
     
@@ -42,4 +44,9 @@ int main(int argc, char *argv[])
     producer_thread.join();
     done = true;
     consumer_thread.join();
+
+    auto end_time = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::seconds>(end_time - start_time);
+    std::cout << std::endl << "Elapsed time: " << duration.count() << " seconds\n";
+
 }

@@ -2,7 +2,7 @@
 #include "mytype.hpp"
 #include <iostream>
 
-const long LENGTH_OF_BUFFER = 1000;
+const long LENGTH_OF_BUFFER = 100'000;
 
 std::pair<bool, TVectorLongString> TReadFile::operator()()
 {
