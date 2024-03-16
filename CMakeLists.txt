@@ -14,3 +14,8 @@ add_executable(mtfind main.cpp readfile.cpp transformline.cpp smalltools.cpp cmd
 target_compile_options(mtfind PRIVATE -Ofast -pthread) #O3 tail recursion
 
 TARGET_LINK_LIBRARIES(mtfind ${Boost_LIBRARIES} tbb)
+
+include(CTest) # note: this adds a BUILD_TESTING which defaults to ON
+if(BUILD_TESTING)
+  add_subdirectory(tests)
+endif()
