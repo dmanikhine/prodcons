@@ -3,27 +3,27 @@
 #include <execution>
 #include <iostream>
 
-TVectorLongVectorIntString removeEmptyLine(TVectorLongVectorIntString inVec)
+TForwardListLongForwardListIntString removeEmptyLine(TForwardListLongForwardListIntString inList)
 {
-    inVec.erase(std::remove_if(std::execution::par, begin(inVec), end(inVec), [](std::pair<long, std::vector<std::pair<int, std::string>>> i)
-                               { return i.second.size() == 0; }),
-                end(inVec));
-    return inVec;
+    inList.remove_if([](std::pair<long, std::forward_list<std::pair<int, std::string>>> i)
+                               { return i.second.empty();});
+                
+    return inList;
 }
 
-auto accumulate_func = [](long accumulator, const std::pair<long, std::vector<std::pair<int, std::string>>> &el)
+auto accumulate_func = [](long accumulator, const std::pair<long, std::forward_list<std::pair<int, std::string>>> &el)
 {
-    return accumulator + el.second.size();
+    return accumulator + 1; //todo denis refactor it, it is just for test. accumulate_func workins not wright.
 };
 
-long getMatchCount(TVectorLongVectorIntString inVec)
+long getMatchCount(TForwardListLongForwardListIntString inList)
 {
-    return std::accumulate(inVec.begin(), inVec.end(), 0, accumulate_func);
+    return std::accumulate(inList.begin(), inList.end(), 0, accumulate_func);
 }
 
-void printTVectorLongVectorIntString(TVectorLongVectorIntString &inVec)
+void printTForwardListLongForwardListIntString(TForwardListLongForwardListIntString &inList)
 {
-    for (const auto &i : inVec)
+    for (const auto &i : inList)
     {        
         for (const auto [column, match] : i.second)
         {

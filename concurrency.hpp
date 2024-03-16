@@ -6,7 +6,7 @@
 #include "readfile.hpp"
 #include "transformline.hpp"
 
-inline boost::lockfree::spsc_queue<TVectorLongString, boost::lockfree::capacity<1024>> spsc_queue;
+inline boost::lockfree::spsc_queue<TForwardListLongString, boost::lockfree::capacity<1024>> spsc_queue;
 inline boost::atomic_bool done(false);
 
 void producer(TReadFile &readFile);

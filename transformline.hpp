@@ -10,7 +10,7 @@ public:
     TTransformLine(const TTransformLine &src) = delete;
     TTransformLine &operator=(const TTransformLine &rhs) = delete;
 
-    TVectorLongVectorIntString operator()(TVectorLongString &inVec);
+    TForwardListLongForwardListIntString operator()(TForwardListLongString &inList);
 
 private:
     std::string m_rgx;

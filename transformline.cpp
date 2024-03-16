@@ -5,23 +5,24 @@
 #include <execution>
 #include <regex>
 
-TVectorLongVectorIntString TTransformLine::operator()(TVectorLongString &inVec)
+TForwardListLongForwardListIntString TTransformLine::operator()(TForwardListLongString &inList)
 {
-    TVectorLongVectorIntString resVec(inVec.size());
+    TForwardListLongForwardListIntString resList;
 
-    std::transform(std::execution::par_unseq, inVec.cbegin(), inVec.cend(),
-                   resVec.begin(),
+    std::transform(std::execution::par_unseq, inList.cbegin(), inList.cend(),
+                   resList.begin(),
                    [&lambda_rgx = m_rgx](std::pair<long, std::string> x)
                    {
-                       std::vector<std::pair<int,std::string>> matches;
+                       std::forward_list<std::pair<int,std::string>> matches;
                        std::regex rx(lambda_rgx);
                        for (auto it = std::sregex_iterator(x.second.begin(), x.second.end(), rx);
                             it != std::sregex_iterator();
                             ++it)
                        {
-                           matches.push_back(std::pair{(it->position())+1, it->str()});
+                           matches.push_front(std::pair{(it->position())+1, it->str()});
                        }
+                       matches.reverse();
                        return std::pair(x.first, matches);
                    });
-    return resVec;
+    return resList;
 }

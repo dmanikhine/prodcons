@@ -1,6 +1,6 @@
 #pragma once
-#include <vector>
+#include <forward_list>
 #include <string>
 
-using TVectorLongString = std::vector<std::pair<long,std::string>>;
-using TVectorLongVectorIntString = std::vector<std::pair<long,std::vector<std::pair<int,std::string>>>>;
+using TForwardListLongString = std::forward_list<std::pair<long,std::string>>;
+using TForwardListLongForwardListIntString = std::forward_list<std::pair<long,std::forward_list<std::pair<int,std::string>>>>;

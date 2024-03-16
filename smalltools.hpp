@@ -1,5 +1,5 @@
 #include "mytype.hpp"
-TVectorLongVectorIntString removeEmptyLine(TVectorLongVectorIntString inVec);
-void printTVectorLongVectorIntString(TVectorLongVectorIntString &inVec);
-long getMatchCount(TVectorLongVectorIntString inVec);
+TForwardListLongForwardListIntString removeEmptyLine(TForwardListLongForwardListIntString inVec);
+void printTForwardListLongForwardListIntString(TForwardListLongForwardListIntString &inVec);
+long getMatchCount(TForwardListLongForwardListIntString inVec);
 std::string escapeRegexWithoutQuestionSymbol(const std::string &input);
